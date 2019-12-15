@@ -1,0 +1,125 @@
+<html>
+
+<head>
+  <title>Andrew's Store</title>
+  <link type="text/css" rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js.js"></script>
+
+  <body onload="on()">
+    <div id="overlay">
+      <div id="cookie">
+        <p id="cookieText">This site uses cookies</p>
+        <button onclick="off()" id="buttonOK">Ok</button>
+      </div>
+    </div>
+    <div id="body">
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <p id="CartItem0" class="damountf" onclick="removeItem(0)">Your Cart is empty!</p>
+        <img id="img0" class="imgs" src="" alt="">
+        <p id="CartAmount0" class="damount"></p>
+        <p id="CartItem1" class="damountf" onclick="removeItem(1)"></p>
+        <img id="img1" class="imgs" src="" alt="">
+        <p id="CartAmount1" class="damount"></p>
+        <p id="CartItem2" class="damountf" onclick="removeItem(2)"></p>
+        <img id="img2" class="imgs" src="" alt="">
+        <p id="CartAmount2" class="damount"></p>
+        <p id="Total1"></p>
+        <p id="CheckOut" onclick="checkedout()">Check Out!</p>
+      </div>
+      <div id="otherSideNav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeOtherNav()">&times;</a>
+        <p>Our store is kinda bad and we don't reccomend it.</p>
+        <p id="open">The store is currently OPEN</p>
+        <p id="clockie"></p>
+        <p id="openSoon">Opening Soon!</p>
+        <p id="closeSoon">Closing Soon!</p>
+        <table>
+          <tr>
+            <th id="Sunday">Sunday</th>
+            <th id="Monday">Monday</th>
+            <th id="Tuesday">Tuesday</th>
+            <th id="Wednesday">Wednesday</th>
+            <th id="Thursday">Thursday</th>
+            <th id="Friday">Friday</th>
+            <th id="Saturday">Saturday</th>
+          </tr>
+          <tr>
+            <td id="SundayDay">Closed</td>
+            <td id="MondayDay">8 AM to 7 PM</td>
+            <td id="TuesdayDay">8 AM to 7 PM</td>
+            <td id="WednesdayDay">8 AM to 7 PM</td>
+            <td id="ThursdayDay">8 AM to 7 PM</td>
+            <td id="FridayDay">8 AM to 7 PM</td>
+            <td id="SaturdayDay">Closed</td>
+          </tr>
+        </table>
+<br>
+        <img id="storeImg" src="images/redacted.jpg" alt="">
+        <br>
+        <p>Where is the store?</p>
+        <p>Note: Store is located in parking lot of marked location</p>
+        <div id="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2055.1934927027855!2d-74.09497782501361!3d4.636763280426215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bc336ecf165%3A0x6e833f3a6358fd7b!2sConsulado%20Embajada!5e1!3m2!1sen!2sus!4v1576435272050!5m2!1sen!2sus"
+            width="75%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+        <br>
+        <p></p>
+      </div>
+      <div id="banner">
+        <h1>Andrew's Keyboards</h1>
+      </div>
+      <div>
+        <img id="borgerJuice" src="images\borger.png" alt="" height="25px" style="margin-top: -15px; margin-bottom: 10px;">
+      </div>
+      <div id="header" style="display: none">
+        <hr>
+        <p></p>
+        <div class="head">
+          <p class="items">Keyboards</p>
+        </div>
+        <div class="head">
+          <p class="items">Keycaps</p>
+        </div>
+        <div class="head">
+          <p class="items">KeySwitches</p>
+        </div>
+        <div class="head">
+          <p class="items" onclick="openOtherNav()">About Us</p>
+        </div>
+        <div class="head" onclick="openNav()">
+          <p class="items" id="cartNum">Cart = 0</p>
+          <p class="items" id="cartTotal">0.</p>
+          </a>
+        </div>
+        <div class="head" id="closer">
+          <img src="images/borger.png" alt="" width="25px">
+        </div>
+        <hr>
+      </div>
+      <div id="bigImage"><img id="myImage" src="images/Ducky1.jpg" alt="" name="Blue!"></div>
+
+      <p id="p1">Blue!</p>
+      <p id="price1">119.99</p>
+      <button onclick="addToCart()">Add to cart</button>
+      <br>
+      <img src="images/Ducky1.jpg" class="bottom" alt="" width="32%" onclick="swapper('ducky1', '119.99')" id="ducky1" name="Blue!">
+      <img src="images/Ducky2.png" class="bottom" alt="" width="32%" onclick="swapper('ducky2', '109.99')" id="ducky2" name="White!">
+      <img src="images/Ducky3.png" class="bottom" alt="" width="32%" onclick="swapper('ducky3', '99.99')" id="ducky3" name="Black!">
+      <p style="padding: 10px;">Andrew's Keyboards has only the highest quality keyboards</p>
+
+
+
+      <div id="bottomHeader">
+        <p>Copyright Someone</p>
+      </div>
+    </div>
+  </body>
+
+</html>
