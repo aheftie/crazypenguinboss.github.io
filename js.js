@@ -1,8 +1,8 @@
 var cartAmount = 0;
 var itemsInCart = {
-  "Black!": [0, 59.99, 0, 0],
-  "White!": [0, 59.98, 0, 0],
-  "Blue!": [0, 59.97, 0, 0]
+  "Black!": [0, 99.99, 0, 0],
+  "White!": [0, 109.99, 0, 0],
+  "Blue!": [0, 119.99, 0, 0]
 };
 var reclaimSpots = false;
 var itemsArray = [];
@@ -26,30 +26,35 @@ function refreshCart() {
   //itemsInCart["item" + (cartAmount - 1)] = document.getElementById('myImage').name;
 }
 
-function addToCart() {
+function addToCart(val) {
   cartAmount++;
-  addCart();
+  addCart(val);
   refreshCart();
   refreshNav();
 }
 
-function addCart() {
+function addCart(value) {
   if (itemsInCart[document.getElementById("p1").innerHTML][0] == 0) {
     itemsInCart[document.getElementById("p1").innerHTML][2] = 1;
   }
-  itemsInCart[document.getElementById("p1").innerHTML][0]++;
+  if (value == undefined) {
+    itemsInCart[document.getElementById("p1").innerHTML][0]++;
+  } else {
+    itemsInCart[value][0]++;
+  }
 
 }
-$('document').ready(function(){
-  $("#borgerJuice").click(function(){
+$('document').ready(function() {
+  $("#borgerJuice").click(function() {
     $("#borgerJuice").slideToggle(150);
     $("#header").delay(250).slideToggle(1500);
   });
-  $("#closer").click(function(){
-    $("#borgerJuice").slideToggle(150);
-    $("#header").delay(250).slideToggle(1500);
+  $("#closer").click(function() {
+    $("#header").slideToggle(1500);
+    $("#borgerJuice").delay(2500).slideToggle(150);
   });
 });
+
 function swapper(anID, aPrice) {
   document.getElementById('myImage').src = document.getElementById(anID).src;
   document.getElementById('price1').innerHTML = aPrice;
@@ -57,6 +62,96 @@ function swapper(anID, aPrice) {
   document.getElementById('myImage').name = document.getElementById(anID).name;
 }
 
+function fixItFelix() {
+fixWhite();
+fixBlue();
+fixBlack();
+}
+
+function fixWhite(){
+    document.getElementById("CartAmount" + itemsInCart["White!"][3]).innerText = parseInt(0 + document.getElementById("CartAmount" + itemsInCart["White!"][3]).innerText);
+    var allowd = false;
+  for (var i = 0; i < 21; i++) {
+    if (document.getElementById("CartAmount" + itemsInCart["White!"][3]).innerText == i) {
+      allowd = true;
+    }
+  }
+  if (document.getElementById("CartAmount" + itemsInCart["White!"][3]).innerText == "420"){
+    allowd = true;
+  }
+  if (document.getElementById("CartAmount" + itemsInCart["White!"][3]).innerText == "69"){
+    allowd = true;
+  }
+  if (!allowd) {
+    alert("Hey!");
+    document.getElementById("CartAmount" + itemsInCart["White!"][3]).innerText = itemsInCart["White!"][0];
+  }
+  var ploopy = parseFloat(document.getElementById("CartAmount" + itemsInCart["White!"][3]).innerText);
+    while(allowd && !(parseFloat(itemsInCart["White!"][0]) == ploopy  )) {
+        if(ploopy < parseFloat(itemsInCart["White!"][0])){
+          removeItem(itemsInCart["White!"][3]);
+        }
+        if(ploopy > parseFloat(itemsInCart["White!"][0])){
+          addToCart("White!");
+        }
+    }
+}
+function fixBlue(){
+    document.getElementById("CartAmount" + itemsInCart["Blue!"][3]).innerText = parseInt(0 + document.getElementById("CartAmount" + itemsInCart["Blue!"][3]).innerText);
+    var allowd2 = false;
+  for (var i = 0; i < 21; i++) {
+    if (document.getElementById("CartAmount" + itemsInCart["Blue!"][3]).innerText == i) {
+      allowd2 = true;
+    }
+  }
+  if (document.getElementById("CartAmount" + itemsInCart["Blue!"][3]).innerText == "420"){
+    allowd2 = true;
+  }
+  if (document.getElementById("CartAmount" + itemsInCart["Blue!"][3]).innerText == "69"){
+    allowd2 = true;
+  }
+  if (!allowd2) {
+    alert("Hey!");
+    document.getElementById("CartAmount" + itemsInCart["Blue!"][3]).innerText = itemsInCart["Blue!"][0];
+  }
+  var ploopy2 = parseFloat(document.getElementById("CartAmount" + itemsInCart["Blue!"][3]).innerText);
+    while(allowd2 && !(parseFloat(itemsInCart["Blue!"][0]) == ploopy2  )) {
+        if(ploopy2 < parseFloat(itemsInCart["Blue!"][0])){
+          removeItem(itemsInCart["Blue!"][3]);
+        }
+        if(ploopy2 > parseFloat(itemsInCart["Blue!"][0])){
+          addToCart("Blue!");
+        }
+    }
+}
+function fixBlack(){
+  document.getElementById("CartAmount" + itemsInCart["Black!"][3]).innerText = parseInt(0 + document.getElementById("CartAmount" + itemsInCart["Black!"][3]).innerText);
+  var allowd3 = false;
+for (var i = 0; i < 21; i++) {
+  if (document.getElementById("CartAmount" + itemsInCart["Black!"][3]).innerText == i) {
+    allowd3 = true;
+  }
+}
+if (document.getElementById("CartAmount" + itemsInCart["Black!"][3]).innerText == "420"){
+  allowd3 = true;
+}
+if (document.getElementById("CartAmount" + itemsInCart["Black!"][3]).innerText == "69"){
+  allowd3 = true;
+}
+if (!allowd3) {
+  alert("Hey!");
+  document.getElementById("CartAmount" + itemsInCart["Black!"][3]).innerText = itemsInCart["Black!"][0];
+}
+var ploopy3 = parseFloat(document.getElementById("CartAmount" + itemsInCart["Black!"][3]).innerText);
+  while(allowd3 && !(parseFloat(itemsInCart["Black!"][0]) == ploopy3  )) {
+      if(ploopy3 < parseFloat(itemsInCart["Black!"][0])){
+        removeItem(itemsInCart["Black!"][3]);
+      }
+      if(ploopy3 > parseFloat(itemsInCart["Black!"][0])){
+        addToCart("Black!");
+      }
+  }
+}
 /* Set the width of the side navigation to 250px */
 function refreshNav() {
   for (var i = 0; i < 3; i++) {
@@ -113,11 +208,10 @@ function refreshNav() {
     document.getElementById("Total1").style.display = "block";
     document.getElementById("Total1").innerText = "Total = " + document.getElementById('cartTotal').innerText;
     document.getElementById("CheckOut").style.display = "block";
-    if(permissionNot == "true"){
+    if (permissionNot == "true") {
       document.getElementById("CheckOut").innerHTML = "Check Out!";
 
-    }
-    else {
+    } else {
       document.getElementById("CheckOut").innerHTML = "Notification Permission Required";
       notifyMe();
     }
@@ -129,16 +223,19 @@ function refreshNav() {
     document.getElementById("CheckOut").style.display = "none";
   }
 }
-function checkedout(){
-if (permissionNot == "true"){
-  checkedot = "true";
-}
+
+function checkedout() {
+  if (permissionNot == "true") {
+    checkedot = "true";
+  }
 
 }
+
 function openNav() {
   refreshNav();
   document.getElementById("mySidenav").style.width = "250px";
 }
+
 function openOtherNav() {
   document.getElementById("otherSideNav").style.width = "100%";
 }
@@ -150,23 +247,23 @@ function closeNav() {
 function closeOtherNav() {
   document.getElementById("otherSideNav").style.width = "0";
 }
+
 function notifyMe() {
   if (!("Notification" in window)) {
     alert("This browser does not support desktop notification");
-  }
-  else if (Notification.permission === "granted") {
+  } else if (Notification.permission === "granted") {
     permissionNot = "true";
     console.log("Granted");
-  }
-  else if (Notification.permission == "denied" || Notification.permission !== "granted") {
-    Notification.requestPermission().then(function (permission) {
+  } else if (Notification.permission == "denied" || Notification.permission !== "granted") {
+    Notification.requestPermission().then(function(permission) {
       if (permission == "granted") {
-          permissionNot = "true";
-          console.log("Granted after request");
+        permissionNot = "true";
+        console.log("Granted after request");
       }
     });
   }
 }
+
 function on() {
   notifyMe();
   document.getElementById("overlay").style.display = "block";
@@ -240,25 +337,23 @@ function time() {
   var pm = "A.M."
   if (wek < 6 && wek > 0 && h < 8 && h > 7) {
     document.getElementById("openSoon").style.display = "block";
-  }
-  else {
+  } else {
     document.getElementById("openSoon").style.display = "none";
   }
   if (wek < 6 && wek > 0 && h < 18 && h > 17) {
     document.getElementById("closeSoon").style.display = "block";
-  }
-  else {
+  } else {
     document.getElementById("closeSoon").style.display = "none";
   }
   if (h > 12) {
     h -= 12;
     var pm = "P.M."
   }
-  if (last !== s && checkedot == "true"){
+  if (last !== s && checkedot == "true") {
     var notification = new Notification('Hello There', {
- icon: 'images/hellothereSquare.jpg',
- body: 'General Kenobi',
-});
+      icon: 'images/hellothereSquare.jpg',
+      body: 'General Kenobi',
+    });
     last = s;
   }
   if (day == 1) {
